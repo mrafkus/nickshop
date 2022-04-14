@@ -6,13 +6,14 @@ import "./index.css";
 import "remixicon/fonts/remixicon.css";
 
 import App from "./App";
+import Login from "./pages/Login";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-        </Route>
+        <Route path="/" element={<App />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </BrowserRouter>{" "}
   </React.StrictMode>,
