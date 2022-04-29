@@ -1,25 +1,57 @@
 import login from "../assets/login.png";
 
+import {
+  useNavigate
+} from "react-router-dom";
+
+import axios from "axios";
+
 export default function Login() {
+  const navigate = useNavigate();
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+
+    axios.post("http://localhost:8080/login", {
+      username,
+      password
+    }).then(response => {
+      console.log(JSON.stringify(response));
+    }).catch(err => {
+      console.err(JSON.stringify(err));
+    })
+  }
+
   return (
-    <div>
-      <div className="flex justify-center">
-        <img src={login} className="items-center h-[420px]" />
-      </div>
-      <div className="flex flex-col items-center m-10">
-        <h3 className="text-xl font-bold text-gray-600">Username</h3>
-        <input
-          className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
-        />
-      </div>
-      <div className="flex flex-col items-center">
-        <h3 className="text-xl font-bold text-gray-600">Password</h3>
-        <div>
+    <form className="my-10" onSubmit={onSubmit}>
+        <div className="flex flex-col items-center gap-5">
+          <img src={login} className="items-center h-[420px] rounded-3xl" />
+          <div className="flex flex-col items-center gap-2">
+            <label htmlFor="username-input" className="text-xl font-bold leading-none text-gray-600">Username</label>
+            <input
+              id="username-input"
+              type="text"
+              name="username"
+              className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
+            />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <label htmlFor="password-input" className="text-xl font-bold leading-none text-gray-600">Password</label>
+            <input
+              id="password-input"
+              type="password"
+              name="password"
+              className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
+            />
+          </div>
           <input
-            className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
+            type="submit"
+            className="px-2 mt-1 text-xl font-bold text-white bg-blue-400 h-7 w-96 ring-2 rounded-md grow"
           />
         </div>
-      </div>
-    </div>
+    </form>
   )
 }

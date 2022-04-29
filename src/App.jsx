@@ -4,11 +4,9 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="flex flex-col items-stretch min-h-screen md:flex-row bg-stone-100">
+    <div className="flex flex-col min-h-screen bg-stone-100">
       <Navbar />
-      <div className="flex flex-wrap items-stretch grow">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   )
 }
