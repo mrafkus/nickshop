@@ -1,13 +1,15 @@
-import login from "../assets/login.png";
+import hero from "../assets/login.png";
 
-import {
-  useNavigate
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../states/auth/authSlice";
+
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function onSubmit(e) {
     e.preventDefault();
@@ -15,20 +17,28 @@ export default function Login() {
     const username = e.target.username.value;
     const password = e.target.password.value;
 
-    axios.post("http://localhost:8080/login", {
+    axios.post("http://0.0.0.0:8080/login", {
       username,
       password
     }).then(response => {
-      console.log(JSON.stringify(response));
+      if (response.status == 200) {
+        console.log("Login successful");
+        dispatch(login({ token: response.data.token, username }));
+        navigate("/");
+      } else if (response.status == 500) {
+        window.alert("Can't login, internal server error");
+      } else {
+        window.alert("Can't login, unknown error");
+      }
     }).catch(err => {
-      console.err(JSON.stringify(err));
+      console.error(JSON.stringify(err));
     })
   }
 
   return (
     <form className="my-10" onSubmit={onSubmit}>
         <div className="flex flex-col items-center gap-5">
-          <img src={login} className="items-center h-[420px] rounded-3xl" />
+          <img src={hero} className="items-center h-[420px] rounded-3xl" />
           <div className="flex flex-col items-center gap-2">
             <label htmlFor="username-input" className="text-xl font-bold leading-none text-gray-600">Username</label>
             <input
