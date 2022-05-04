@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 
 import store from "./store.js";
 import { Provider } from "react-redux";
+import Home from "./pages/Home";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>

@@ -46,6 +46,7 @@ export default function Login() {
               type="text"
               name="username"
               className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
+              autoComplete="currentPassword"
             />
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -55,6 +56,7 @@ export default function Login() {
               type="password"
               name="password"
               className="px-2 text-gray-700 h-7 w-96 ring-2 ring-blue-400 rounded-md grow"
+              autoComplete="currentPassword"
             />
           </div>
           <input
