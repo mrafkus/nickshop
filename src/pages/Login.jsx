@@ -36,9 +36,9 @@ export default function Login() {
   }
 
   return (
-    <form className="my-10" onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
         <div className="flex flex-col items-center gap-5">
-          <img src={hero} className="items-center h-[420px] rounded-3xl" />
+          <img src={hero} className="w-full h-full rounded-3xl" />
           <div className="flex flex-col items-center gap-2">
             <label htmlFor="username-input" className="text-xl font-bold leading-none text-gray-600">Username</label>
             <input

@@ -9,9 +9,11 @@ function App() {
   const username = useSelector(state => state.auth.username);
 
   return (
-    <div className="flex flex-col min-h-screen bg-stone-100">
+    <div className="flex flex-col items-center min-h-screen bg-stone-100">
       <Navbar isLoggedIn={authToken != null} username={username} />
-      <Outlet />
+      <div className="w-full max-w-3xl my-6 xl:max-w-4xl">
+        <Outlet />
+      </div>
     </div>
   )
 }

@@ -3,10 +3,9 @@ import {Link} from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 export default function Navbar({isLoggedIn, forceHideDecorations, hideSearchBar, username}) {
-  console.log(JSON.stringify(isLoggedIn));
   return (
-    <div className="z-10 h-24 shrink-0">
-      <div className="fixed flex items-center justify-between w-screen h-24 px-10 bg-white border-r shadow gap-6 border-stone-50 leading-3">
+    <div className="relative z-10 w-full h-24 shrink-0">
+      <div className="fixed flex items-center justify-between w-full h-24 px-10 bg-white border-r shadow gap-6 border-stone-50 leading-3">
         <div className="flex items-center space-x-12 grow-[0.5]">
           <img src={logo} className="h-[32px] relative bottom-1" />
           {!forceHideDecorations && !hideSearchBar && (
