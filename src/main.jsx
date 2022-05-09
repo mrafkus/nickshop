@@ -13,8 +13,13 @@ import Pubg from "./pages/Pubg";
 import Ff from "./pages/FF";
 import Aov from "./pages/Aov";
 
+import store from "./store.js";
+import { Provider } from "react-redux";
+import Home from "./pages/Home";
+
 ReactDOM.render(
   <React.StrictMode>
+<<<<<<< HEAD
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
@@ -26,6 +31,18 @@ ReactDOM.render(
         <Route path="/aov" element={<Aov />}></Route>
       </Routes>
     </BrowserRouter>{" "}
+=======
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+>>>>>>> f23684370b56401c843cf9107bfa680fc83b669b
   </React.StrictMode>,
   document.getElementById("root")
 );
